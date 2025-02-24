@@ -72,10 +72,6 @@ BusinessAI is designed with a well-defined execution plan, ensuring practical im
 - *Scalability:* Cloud-based infrastructure to support businesses of all sizes.  
 - *Security & Compliance:* Implements encryption and access controls for data protection.  
 
-### Expertise & Collaboration  
-- Our team consists of AI, automation, and full-stack development experts.  
-- Collaboration with industry professionals for real-world testing and continuous feedback.  
-
 ## AI-Powered Features  
 BusinessAI leverages AI to automate critical business functions, reducing human intervention and increasing accuracy.  
 
