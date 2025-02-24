@@ -22,12 +22,12 @@ BusinessAI empowers organizations by saving time, reducing human errors, and enh
 Businesses often struggle with repetitive and time-consuming tasks such as data entry, document processing, and customer service interactions. BusinessAI addresses these inefficiencies through intelligent process automation, allowing enterprises to operate more effectively.  
 
 ## Technology Stack  
-- *Frontend:* React (JavaScript + SWC) for a responsive and interactive UI.  
+- *Frontend:* Flutter for a cross-platform, high-performance UI.
 - *Backend:* Node.js with Express for efficient API management.  
 - *Database:* MongoDB for scalable and flexible data storage.  
 - *AI Integration:* Python (Django) for AI-driven automation, chat, and call handling.  
 - *Communication:* Twilio for automated calls and emails.  
-- *Barcode Processing:* JavaScript libraries for barcode scanning and generation.  
+- *Barcode Processing:* Flutter plugins for barcode generation and scanning.
 
 ## Core Components  
 - *AI Chatbot* – Provides real-time support and automates customer interactions.  
