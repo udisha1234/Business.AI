@@ -77,7 +77,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
           ),
         ],
       ),
-            floatingActionButton: FloatingActionButton(
+      floatingActionButton: FloatingActionButton(
         child: Icon(Icons.chat),
         onPressed: () {
           showModalBottomSheet(
