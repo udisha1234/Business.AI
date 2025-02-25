@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../ai_chat/presentation/pages/ai_chat_assistant.dart';
 import 'home_tab.dart';
 
 class DashboardScreen extends StatefulWidget {
@@ -71,6 +72,23 @@ class _DashboardScreenState extends State<DashboardScreen> {
             label: 'Settings',
           ),
         ],
+      ),
+            floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.chat),
+        onPressed: () {
+          showModalBottomSheet(
+            context: context,
+            isScrollControlled: true,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+            ),
+            builder: (BuildContext context) {
+              // return Container();
+              return AIChatAssistant();
+            },
+          );
+        },
+        tooltip: 'AI Assistant',
       ),
     );
   }
