@@ -2,17 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'features/dashboard/presentation/pages/dashboard_screen.dart';
 import 'features/ai_chat/domain/controllers/chat_controller.dart';
+import 'features/automation/domain/controllers/automation_controller.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
+  
+  // Dependency Injection
   Get.put(ChatController());
+  Get.put(AutomationController());
+
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp( 
+    return GetMaterialApp(
       title: 'BusinessAI',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
