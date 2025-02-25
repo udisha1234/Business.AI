@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import '../../../ai_chat/presentation/pages/ai_chat_assistant.dart';
+import '../../../automation/presentation/pages/automation_tab.dart';
 import '../../../customers/presentation/pages/customer_tab.dart';
 import '../../../sales/presentation/pages/sales_tab.dart';
+import '../../../settings/presentation/pages/settings_tab.dart';
 import 'home_tab.dart';
 
 class DashboardScreen extends StatefulWidget {
@@ -16,9 +18,9 @@ class _DashboardScreenState extends State<DashboardScreen> {
     HomeTab(),
     CustomerTab(),
     SalesTab(),
+    AutomationTab(),
+    SettingsTab(),
     // HomeTab(),
-    CustomerTab(),
-    HomeTab(),
   ];
 
   @override
