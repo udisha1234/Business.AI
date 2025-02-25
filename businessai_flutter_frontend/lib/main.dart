@@ -4,7 +4,7 @@ import 'features/dashboard/presentation/pages/dashboard_screen.dart';
 import 'features/ai_chat/domain/controllers/chat_controller.dart';
 
 void main() {
-  WidgetsFlutterBinding.ensureInitialized(); // Ensures everything is set up before running the app
+  WidgetsFlutterBinding.ensureInitialized();
   Get.put(ChatController());
   runApp(MyApp());
 }

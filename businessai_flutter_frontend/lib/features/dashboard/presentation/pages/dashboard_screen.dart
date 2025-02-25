@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../ai_chat/presentation/pages/ai_chat_assistant.dart';
 import '../../../customers/presentation/pages/customer_tab.dart';
+import '../../../sales/presentation/pages/sales_tab.dart';
 import 'home_tab.dart';
 
 class DashboardScreen extends StatefulWidget {
@@ -14,7 +15,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
   final List<Widget> _pages = [
     HomeTab(),
     CustomerTab(),
-    HomeTab(),
+    SalesTab(),
+    // HomeTab(),
     CustomerTab(),
     HomeTab(),
   ];
