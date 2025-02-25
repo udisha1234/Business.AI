@@ -1,41 +1,38 @@
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../domain/models/chat_message.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
+import 'package:flutter/material.dart';
 
 class ChatController extends GetxController {
-  var messages = <ChatMessage>[].obs;
-  TextEditingController textController = TextEditingController(); // ✅ Updated
+  var messages = <Map<String, String>>[].obs; // Stores messages
+  var isLoading = false.obs;
+  TextEditingController textController = TextEditingController();
 
-  @override
-  void onInit() {
-    super.onInit();
-    // Initialize with a welcome message
-    messages.add(ChatMessage(
-      text: "Hello! I'm your AI assistant. How can I help you with your business today?",
-      isUser: false,
-      timestamp: DateTime.now(),
-    ));
-  }
+  Future<void> sendMessage() async {
+    String userMessage = textController.text.trim();
+    if (userMessage.isEmpty) return;
 
-  void sendMessage() {
-    if (textController.text.trim().isEmpty) return;
+    messages.add({"role": "user", "text": userMessage});
+    textController.clear();
+    isLoading.value = true;
 
-    messages.add(ChatMessage(
-      text: textController.text, // ✅ Use the textController
-      isUser: true,
-      timestamp: DateTime.now(),
-    ));
-
-    // Clear input field
-    textController.clear(); // ✅ Proper way to clear input
-
-    // Simulate AI response
-    Future.delayed(Duration(seconds: 1), () {
-      messages.add(ChatMessage(
-        text: "I'm processing your request. How else can I assist?",
-        isUser: false,
-        timestamp: DateTime.now(),
-      ));
-    });
+    try {
+      var response = await http.post(
+        Uri.parse('http://192.168.29.227:5000/chat'), // Update to your IP if needed
+        headers: {"Content-Type": "application/json"},
+        body: jsonEncode({"message": userMessage}),
+      );
+      print(response);
+      if (response.statusCode == 200) {
+        var data = jsonDecode(response.body);
+        messages.add({"role": "ai", "text": data['reply'] ?? "No response"});
+      } else {
+        messages.add({"role": "error", "text": "Error: Unable to get response."});
+      }
+    } catch (e) {
+      messages.add({"role": "error", "text": "Error: ${e.toString()}"});
+    } finally {
+      isLoading.value = false;
+    }
   }
 }
