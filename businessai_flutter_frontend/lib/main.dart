@@ -5,14 +5,14 @@ import 'features/ai_chat/domain/controllers/chat_controller.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized(); // Ensures everything is set up before running the app
-  Get.put(ChatController()); // ✅ Initialize ChatController globally
+  Get.put(ChatController());
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp( // ✅ Use GetMaterialApp for GetX features
+    return GetMaterialApp( 
       title: 'BusinessAI',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(

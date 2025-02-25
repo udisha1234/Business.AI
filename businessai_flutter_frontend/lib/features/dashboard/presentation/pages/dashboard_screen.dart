@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-
 import '../../../ai_chat/presentation/pages/ai_chat_assistant.dart';
+import '../../../customers/presentation/pages/customer_tab.dart';
 import 'home_tab.dart';
 
 class DashboardScreen extends StatefulWidget {
@@ -13,9 +13,9 @@ class _DashboardScreenState extends State<DashboardScreen> {
 
   final List<Widget> _pages = [
     HomeTab(),
+    CustomerTab(),
     HomeTab(),
-    HomeTab(),
-    HomeTab(),
+    CustomerTab(),
     HomeTab(),
   ];
 
@@ -50,7 +50,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
             _selectedIndex = index;
           });
         },
-        items: [
+        items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: 'Home',
@@ -83,7 +83,6 @@ class _DashboardScreenState extends State<DashboardScreen> {
               borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
             ),
             builder: (BuildContext context) {
-              // return Container();
               return AIChatAssistant();
             },
           );
