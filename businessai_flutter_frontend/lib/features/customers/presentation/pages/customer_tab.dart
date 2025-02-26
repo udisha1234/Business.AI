@@ -34,7 +34,8 @@ class CustomerTab extends StatelessWidget {
                   itemCount: customerController.filteredCustomers.length,
                   separatorBuilder: (context, index) => Divider(height: 1),
                   itemBuilder: (context, index) {
-                    final customer = customerController.filteredCustomers[index];
+                    final customer =
+                        customerController.filteredCustomers[index];
                     return ListTile(
                       leading: CircleAvatar(child: Text(customer.name[0])),
                       title: Text(customer.name),
@@ -42,7 +43,8 @@ class CustomerTab extends StatelessWidget {
                       trailing: IconButton(
                         icon: Icon(Icons.delete, color: Colors.red),
                         onPressed: () {
-                          customerController.removeCustomer(index);
+                          customerController.removeCustomer(
+                              customer.id.toString()); // Ensure id is String
                         },
                       ),
                       onTap: () {},
@@ -63,28 +65,84 @@ class CustomerTab extends StatelessWidget {
   }
 
   void _showAddCustomerDialog(BuildContext context) {
-    String name = '';
-    String email = '';
+    final TextEditingController nameController = TextEditingController();
+    final TextEditingController emailController = TextEditingController();
+    final TextEditingController phoneController = TextEditingController();
 
     Get.defaultDialog(
       title: "Add Customer",
-      content: Column(
-        children: [
-          TextField(
-            decoration: InputDecoration(hintText: "Name"),
-            onChanged: (value) => name = value,
-          ),
-          SizedBox(height: 10),
-          TextField(
-            decoration: InputDecoration(hintText: "Email"),
-            onChanged: (value) => email = value,
-          ),
-        ],
+      content: SingleChildScrollView(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            TextField(
+              controller: nameController,
+              decoration: InputDecoration(
+                hintText: "Name",
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(8.0),
+                ),
+                contentPadding: const EdgeInsets.symmetric(
+                    horizontal: 16.0, vertical: 14.0),
+              ),
+            ),
+            const SizedBox(height: 10),
+            TextField(
+              controller: emailController,
+              decoration: InputDecoration(
+                hintText: "Email",
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(8.0),
+                ),
+                contentPadding: const EdgeInsets.symmetric(
+                    horizontal: 16.0, vertical: 14.0),
+              ),
+              keyboardType: TextInputType.emailAddress,
+            ),
+            const SizedBox(height: 10),
+            TextField(
+              controller: phoneController,
+              decoration: InputDecoration(
+                hintText: "Phone",
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(8.0),
+                ),
+                contentPadding: const EdgeInsets.symmetric(
+                    horizontal: 16.0, vertical: 14.0),
+              ),
+              keyboardType: TextInputType.phone,
+            ),
+          ],
+        ),
       ),
+      // SingleChildScrollView(
+      //   child: Column(
+      //     children: [
+      //       TextField(
+      //         controller: nameController,
+      //         decoration: InputDecoration(hintText: "Name"),
+      //       ),
+      //       SizedBox(height: 10),
+      //       TextField(
+      //         controller: emailController,
+      //         decoration: InputDecoration(hintText: "Email"),
+      //       ),
+      //       SizedBox(height: 10),
+      //       TextField(
+      //         controller: phoneController,
+      //         decoration: InputDecoration(hintText: "Phone"),
+      //       ),
+      //     ],
+      //   ),
+      // ),
       confirm: ElevatedButton(
         onPressed: () {
-          if (name.isNotEmpty && email.isNotEmpty) {
-            Get.find<CustomerController>().addCustomer(name, email);
+          if (nameController.text.isNotEmpty &&
+              emailController.text.isNotEmpty &&
+              phoneController.text.isNotEmpty) {
+            Get.find<CustomerController>().addCustomer(nameController.text,
+                emailController.text, phoneController.text);
             Get.back();
           }
         },

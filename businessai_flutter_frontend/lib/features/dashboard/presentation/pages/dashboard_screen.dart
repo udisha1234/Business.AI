@@ -77,22 +77,22 @@ class _DashboardScreenState extends State<DashboardScreen> {
           ),
         ],
       ),
-      floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.chat),
-        onPressed: () {
-          showModalBottomSheet(
-            context: context,
-            isScrollControlled: true,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
-            ),
-            builder: (BuildContext context) {
-              return AIChatAssistant();
-            },
-          );
-        },
-        tooltip: 'AI Assistant',
-      ),
+      // floatingActionButton: FloatingActionButton(
+      //   child: Icon(Icons.chat),
+      //   onPressed: () {
+      //     showModalBottomSheet(
+      //       context: context,
+      //       isScrollControlled: true,
+      //       shape: RoundedRectangleBorder(
+      //         borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+      //       ),
+      //       builder: (BuildContext context) {
+      //         return AIChatAssistant();
+      //       },
+      //     );
+      //   },
+      //   tooltip: 'AI Assistant',
+      // ),
     );
   }
 }
