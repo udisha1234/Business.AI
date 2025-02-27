@@ -11,8 +11,7 @@ dotenv.config();
 console.log("TWILIO_ACCOUNT_SID:", process.env.TWILIO_ACCOUNT_SID);
 console.log("TWILIO_AUTH_TOKEN:", process.env.TWILIO_AUTH_TOKEN);
 
-// const client = twilio(process.env.TWILIO_ACCOUNT_SID, process.env.TWILIO_AUTH_TOKEN);
-const client = twilio("ACab2fb761596640c294427386f26a16d5", "48e07752bfe8a0083863b487c1e718f2");
+const client = twilio(process.env.TWILIO_ACCOUNT_SID, process.env.TWILIO_AUTH_TOKEN);
 
 const sendOtp = async (req, res) => {
   const { phone } = req.body;
