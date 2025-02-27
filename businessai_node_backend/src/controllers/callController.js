@@ -7,7 +7,6 @@ const client = twilio(process.env.TWILIO_ACCOUNT_SID, process.env.TWILIO_AUTH_TO
 
 
 export const makeCall = async (req, res) => {
-    console.log('Incoming Request Body:', req.body);
   const { phoneNumber } = req.body; 
   
   if (!phoneNumber) {

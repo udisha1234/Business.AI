@@ -6,6 +6,7 @@ import userRoutes from "./src/routes/userRoutes.js"; // Ensure the correct path
 import customerrouter from "./src/routes/customerRoutes.js"
 import otpRoutes from "./src/routes/otpRoutes.js"
 import callRoutes from "./src/routes/callRoutes.js"
+import emailRoutes from "./src/routes/emailRoutes.js"
 dotenv.config(); // Load environment variables
 
 const app = express();
@@ -33,6 +34,7 @@ app.use("/api", userRoutes);
 app.use("/api",customerrouter)
 app.use('/api/otp', otpRoutes);
 app.use('/api', callRoutes);
+app.use('/api/email', emailRoutes);
 // Start the Server
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
