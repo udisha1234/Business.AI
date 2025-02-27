@@ -8,9 +8,6 @@ import Otp from '../model/otpModel.js';  // Ensure `.js` extension for ES module
 
 dotenv.config();
 
-console.log("TWILIO_ACCOUNT_SID:", process.env.TWILIO_ACCOUNT_SID);
-console.log("TWILIO_AUTH_TOKEN:", process.env.TWILIO_AUTH_TOKEN);
-
 const client = twilio(process.env.TWILIO_ACCOUNT_SID, process.env.TWILIO_AUTH_TOKEN);
 
 const sendOtp = async (req, res) => {
@@ -22,7 +19,6 @@ const sendOtp = async (req, res) => {
     const otp = Math.floor(100000 + Math.random() * 900000);
     await Otp.create({ phone, otp });
 
-    console.log(`Sending OTP ${otp} to ${phone}`);
 
     await client.messages.create({
       body: `Your OTP code is ${otp}`,
