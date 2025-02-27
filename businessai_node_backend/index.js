@@ -4,6 +4,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 import userRoutes from "./src/routes/userRoutes.js"; // Ensure the correct path
 import customerrouter from "./src/routes/customerRoutes.js"
+import otpRoutes from "./src/routes/otpRoutes.js"
 dotenv.config(); // Load environment variables
 
 const app = express();
@@ -29,6 +30,7 @@ app.get("/", (req, res) => {
 // Define API Routes
 app.use("/api", userRoutes);
 app.use("/api",customerrouter)
+app.use('/api/otp', otpRoutes);
 // Start the Server
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
