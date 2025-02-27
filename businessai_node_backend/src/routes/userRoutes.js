@@ -7,4 +7,4 @@ router.get("/users", (req, res) => {
   res.json({ message: "List of users" });
 });
 
-export default router; // Use `export default` instead of `module.exports`
+export default router; 
