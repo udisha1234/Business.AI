@@ -4,7 +4,7 @@
 
 import twilio from 'twilio';
 import dotenv from 'dotenv';
-import Otp from '../model/otpModel.js';  // Ensure `.js` extension for ES modules
+import Otp from '../model/otpModel.js';  
 
 dotenv.config();
 
@@ -50,8 +50,5 @@ const verifyOtp = async (req, res) => {
   }
 };
 
-// module.exports = { sendOtp, verifyOtp }; // Fix export
-
-// export default {sendOtp,verifyOtp};
 export { sendOtp, verifyOtp };
 
